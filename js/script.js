@@ -38,5 +38,8 @@ function checkPass(){
             console.log("access does not granted to user")
         }
      }
+     else{
+        alert("Please select any one of the option Admin or User")
+     }
 
 }
