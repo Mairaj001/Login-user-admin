@@ -5,22 +5,24 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Quicksand', sans-serif;
+ 
 }
 
-body 
+html,body 
 {
   height: 100%;
   width: 100%;
-  background: black;
+  /* background: black; */
 }
 
-.navbar{
+.navbar-user{
     display: flex;
     justify-content: space-around;
     align-items: center;
     /* background-color: red; */
     height: 80px;
     width: 100%;
+    box-shadow: -1px 2px 18px 0px #aaa;
     /* display: none; */
   }
   
@@ -28,7 +30,7 @@ body
     list-style: none;
     display: inline;
     margin: 0px 8px;
-    color:#aaa;
+    color:black;
     font-size: 1.3rem;
     cursor: pointer;
   }
@@ -39,11 +41,166 @@ body
   }
 
   
-wrapper-user{
+.wrapper-user{
     position: relative;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background: black;
-   height: 1000px;
+    /* background: black; */
+   height: 100%;
+   width: 100%;
+   flex-direction: column;
+}
+
+.content-user{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 80px);
+  width: 100%;
+  /* background-color: red; */
+}
+
+.content-inner-div{
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 500px;
+  /* background-color: rebeccapurple; */
+  margin: auto;
+}
+
+.upper-div{
+  display: flex;
+  justify-content: baseline;
+  align-items: flex-end;
+   height: 30px;
+   width: 100%;
+   /* background-color: red; */
+}
+
+.loader{
+  
+  height: 15px;
+  margin-bottom: 6px;
+  width: 60%;
+  
+  margin-left: 90px;
+  border: 1.5px solid #aaa;
+  background-color: #0f0;
+  border-radius: 20px;
+  
+}
+
+.timer-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   margin-left: 30px;
+   height: 30px;
+   width: 10%;
+   /* background-color: aqua; */
+}
+.box-div{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  /* background-color: #0f0; */
+  margin-bottom: 10px;
+}
+.tense-div{
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  border-radius: 20px;
+  font-weight: 600;
+  height: 30px;
+  box-shadow: #aaa;
+  /* background-color: black; */
+  box-shadow: -1px 1px 18px 0px #aaa;
+
+  margin-bottom: 15px;
+  border: 1.5px solid #aaa;
+
+}
+.row{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  margin-bottom: 8px;
+  /* background-color: blue; */
+}
+.row div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 30px;
+  width: 15%;
+  border: 1.7px solid rgb(70, 68, 68);
+  border-radius: 3px;
+  overflow-x: auto;
+  overflow-y: none;
+  
+}
+.first{
+  font-weight: 600;
+}
+.have{
+  color:#aaa
+}
+
+.options-button{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  /* background-color: red; */
+}
+.inner-options{
+  width: 70%;
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+}
+
+.options-button button{
+  padding: 5px 17px;
+  margin: 0px 10px;
+}
+#next{
+  padding: 1px 7px;
+  font-size: 25PX;
+  background-color: transparent;
+  border: none;
+  border: 1px solid black;
+  border-radius: 10%;
+}
+.start-but{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: red; */
+  width: 100%;
+
+}
+.start-but button{
+  padding: 5px 27px;
+  margin: 0px 10px;
+  background-color: rgb(7, 70, 197);
+  border: none;
+  border-radius: 20px;
+  color:white;
+  font-size: 16px;
+  font-weight: 600;
 }
