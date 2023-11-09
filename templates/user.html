@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
+    
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body>
@@ -119,7 +120,7 @@
             </div>
 
 
-           <script src="js/script.js"></script>
+           <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     </div>
 </body>
 </html>
