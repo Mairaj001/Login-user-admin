@@ -49,6 +49,8 @@ html,body
     width: 30%;
   }
   
+   
+   
 .wrapper-user{
     position: relative;
     display: flex;
@@ -97,9 +99,15 @@ html,body
   
   margin-left: 90px;
   border: 1.5px solid #aaa;
-  background-color: #0f0;
+  background-color: transparent;
   border-radius: 20px;
   
+}
+#progress{
+  height: 100%;
+  width: 10%;
+  background-color: #0f0;
+  border-radius: 20px;
 }
 
 .timer-div{
@@ -116,7 +124,7 @@ html,body
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
-  height: auto;
+  height: 100%;
   width: 100%;
   /* background-color: #0f0; */
   margin-bottom: 10px;
@@ -279,3 +287,5 @@ body.dark h1, body.dark .support a ,body.dark .wrapper-user{color: #fff;}
 .support a:hover{
   transform: scale(1.1);
 }
+
+

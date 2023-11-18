@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
+    <link rel="stylesheet" href="../static/css/user.css">
+    <link rel="stylesheet" href="../static/css/cicular.css">
+    <link rel="stylesheet" href="../static/css/cicular.css">
+  
+   
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper-user">
+        <div class="navbar-user">
+            <div class="left">
+              USER
+            </div>
+        
+            <div class="right">
+              <div class="user-iconn">
+                <input type="checkbox" class="checkbox" id="checkbox">
+               <label for="checkbox" class="checkbox-label">
+               <i class="fas fa-moon"></i>
+               <i class="fas fa-sun"></i>
+                <span class="ball"></span> 
+              </div>
+              <li>Home</li>
+              <li>About</li>
+              <li>services</li>
+            
+            </div>
+        </div>
+
+
+            <div class="content-user">
+              <div class="content-inner-div">
+                <div class="upper-div">
+                  <div class="loader">
+
+                  </div>
+                  <div class="timer-div">
+                    00:00
+                  </div>
+                </div>
+                <div class="box-div">
+                  <div class="tense-div">
+                    to be
+                  </div>
+                  <div class="circle-container" id="circle-container">
+                    <div class="circle-button circle1">You</div>
+                    <div class="circle-button circle2">They</div>
+                    <div class="circle-button circle3">I</div>
+                    <div class="circle-button circle4">You</div>
+                    <div class="circle-button circle5">he</div>
+                    <div class="circle-button circle6">She</div>
+                    <div class="circle-button circle7">It</div>
+                    <div class="circle-button circle8" onclick="rotate()">we</div>
+                </div>
+                  
+                  
+                </div>
+                <div class="options-button">
+                  <div class="inner-options">
+                  <button id="have" onclick="rotate()">am</button>
+                  <button id="Has">is</button>
+                  <button id="been">are</button>
+                </div>
+                
+                </div>
+                <div class="start-but">
+                 <input type="text" placeholder="are">
+                </div>
+              </div>
+            </div>
+
+          <script src="../static/js/circular.js"></script>
+           <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+           <script src="../static/js/script.js"></script>
+           <script>
+            let rotating = false;
+
+function rotate() {
+    if (!rotating) {
+        rotating = true;
+        const circles = document.querySelectorAll('.circle-button:not(.circle8)');
+        circles.forEach((circle, index) => {
+            circle.style.animation = `rotate 5s linear infinite ${index}s`;
+        });
+    } else {
+        rotating = false;
+        const circles = document.querySelectorAll('.circle-button:not(.circle8)');
+        circles.forEach((circle) => {
+            circle.style.animation = 'none';
+        });
+    }
+}
+           </script>
+    </div>
+</body>
+</html>

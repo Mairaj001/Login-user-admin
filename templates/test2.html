@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+    }
+
+    .button {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-color: #3498db;
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="spiral-container"></div>
+
+  <script>
+    const container = document.getElementById('spiral-container');
+    const buttonCount = 8;
+    const centralX = 150;
+    const centralY = 150;
+    const radius = 80;
+    let angles = [];
+    let animationTime = 0;
+    const animationDuration = 2000; // 2 seconds
+
+    function updateButtonPositions() {
+      for (let i = 0; i < buttonCount; i++) {
+        const button = container.children[i];
+        const x = centralX + radius * Math.cos(angles[i]);
+        const y = centralY + radius * Math.sin(angles[i]);
+        button.style.left = `${x}px`;
+        button.style.top = `${y}px`;
+
+        angles[i] += 0.01; // Adjust the speed of movement for each button
+      }
+
+      animationTime += 16; // Approx. 60 frames per second
+      if (animationTime < animationDuration) {
+        requestAnimationFrame(updateButtonPositions);
+      }
+    }
+
+    // Create buttons and set initial positions
+    for (let i = 0; i < buttonCount; i++) {
+      const button = document.createElement('button');
+      button.className = 'button';
+      container.appendChild(button);
+      angles.push((2 * Math.PI * i) / buttonCount); // Initialize angles for each button
+    }
+
+    // Initiate animation
+    setTimeout(() => {
+      updateButtonPositions();
+    }, 0); // Start animation after 0ms (immediately)
+
+  </script>
+</body>
+</html>
