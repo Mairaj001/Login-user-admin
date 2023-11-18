@@ -77,7 +77,10 @@ body.dark h1, body.dark .support a ,body.dark .wrapper-user{color: #fff;}
     background-color: red !important;
 }
 
-
+.green{
+  background-color: green !important;
+  
+}
 .container-wrapper{
   display: flex;
   justify-content: center;
@@ -142,7 +145,7 @@ body.dark h1, body.dark .support a ,body.dark .wrapper-user{color: #fff;}
   box-sizing: content-box;
 }
 .hovicon:before {
-  speak: none;
+ 
   font-size: 10px;
   line-height: 40px;
   font-style: normal;
@@ -184,23 +187,6 @@ body.dark h1, body.dark .support a ,body.dark .wrapper-user{color: #fff;}
   -moz-animation: sonarEffect 1.3s ease-out 75ms;
   animation: sonarEffect 1.3s ease-out 75ms;
 }
-
-/* .hovicon.effect-8:hover {
-  background: rgba(255, 255, 255, 0.05);
-  -webkit-transform: scale(0.93);
-  -moz-transform: scale(0.93);
-  -ms-transform: scale(0.93);
-  transform: scale(0.93);
-  color: #fff;
-}
-.hovicon.effect-8:hover i {
-  color: #fff;
-}
-.hovicon.effect-8:hover:after {
-  -webkit-animation: sonarEffect 1.3s ease-out 75ms;
-  -moz-animation: sonarEffect 1.3s ease-out 75ms;
-  animation: sonarEffect 1.3s ease-out 75ms;
-} */
 
 @-webkit-keyframes sonarEffect {
   0% {

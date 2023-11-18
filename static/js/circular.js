@@ -9,10 +9,12 @@ let animationTime = 0;
 const animationDuration = 3230; 
 let speed=0;
 let time_out=null;
+let score=0;
+let negScore=0;
+let temp_index=-1;
 
 
 let names=["I","You","He","She","It","He"];
-
 
 function updateButtonPositions() {
    
@@ -23,63 +25,110 @@ function updateButtonPositions() {
     button.style.left = `${x}px`;
     button.style.top = `${y}px`;
 
-    angles[i] += 0.075; 
-    const randomIndex = Math.floor(Math.random() * names.length);
-    button.textContent = names[randomIndex];
+    angles[i] += 0; 
+   
+    button.textContent = names[i];
   }
 
-  animationTime += 78;
-  if (animationTime < animationDuration) {
-    requestAnimationFrame(updateButtonPositions);
-     firstButton = container.children[0];
-    firstButton.style.backgroundColor = '#3498db';
-  } else {
-    animationTime = 0; 
-    angles = angles.map((_, i) => (2 * Math.PI * i) / buttonCount);
-    const firstButton = container.children[0];
-    firstButton.style.backgroundColor = 'orange';
-    firstButton.classList.add('hovicon', 'effect-8');
-  }
+  
 }
-
-
 for (let i = 0; i < buttonCount; i++) {
  
-  const button = document.createElement('button');
-  button.className = 'button';
-
-
-  container.appendChild(button);
-  angles.push(( 2* Math.PI * i) / buttonCount);
+    const button = document.createElement('button');
+    button.className = 'button';
+    if(i===3)
+    {
+        button.style.background="orange";
+    }
   
   
-  
-}
-
-
-function restartAnimation(text) {
-    let first= container.firstElementChild;
-     console.log(first);
-     first.classList.add('anim');
-    input_field.value=text;
-
-    time_out=setTimeout(() => {
-    animationTime = 0; 
-    angles = angles.map((_, i) => (2 * Math.PI * i) / buttonCount); // Reset angles
-    rotate(); 
-   }, 2000);
+    container.appendChild(button);
+    angles.push(( 2* Math.PI * i) / buttonCount);
     
+    
+    
+}
+
+
+updateButtonPositions();
+let currentIndex=0;
+const buttons = document.querySelectorAll('#spiral-container button');
+function shiftColor() {
+    buttons.forEach((button, index) => {
+      if (index === currentIndex) {
+        button.style.backgroundColor = 'orange';
+      } else {
+        button.style.backgroundColor = '';
+      }
+    });
   
-
+    currentIndex = (currentIndex + 1) % buttons.length;
+    console.log(currentIndex);
 }
 
-function rotate()
+
+
+function submit_answer(text)
 {
-    container.firstElementChild.classList.remove('anim');
-    clearTimeout(time_out);
-    setTimeout(() => {
-        updateButtonPositions();
-      }, 0);
+    input_field.value=text;
+    
+   
+
+    for (const button of buttons) {
+        temp_index++;
+    const buttonColor = window.getComputedStyle(button).backgroundColor;
+  
+    if (buttonColor === 'rgb(255, 165, 0)' || buttonColor === 'orange') {
+      console.log(`${button.textContent} has orange color`);
+      let but_text=button.textContent;
+      if(but_text==="You")
+      {
+        text==="are"?score++:negScore++;
+      }
+      else if(but_text==="I")
+      {
+        text==="Am"?score++:negScore++;
+      }
+      else{
+        text==="Is"?score++:negScore++;
+
+      }
+      console.log(but_text,text,score,negScore);
+       let intervals= setInterval(() => {
+            button.classList.toggle('green')
+         
+        }, 420);
+        let sec_int= setTimeout(() => {
+            clearInterval(intervals);
+            button.style.background=" #3498db"
+            console.log("false");
+            
+         }, 2600);
+
+        
+           
+     }
+    
+    
+ }
+ setTimeout(() => {
+    set_interval();
+    clearTimeout(sec_int);
+}, 2600);
+
+ 
+    
+ 
+
 }
 
-rotate();
+function set_interval()
+{
+    const interval = setInterval(() => {
+        shiftColor();
+      }, 220);
+  
+      setTimeout(() => {
+        clearInterval(interval);
+      }, 3000);
+}
