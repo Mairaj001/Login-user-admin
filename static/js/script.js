@@ -22,7 +22,7 @@ function checkPass(){
         if(username=="admin" && password=="admin")
         {
             console.log('access granted to admin');
-            window.location.href = "{{ url_for('admin') }}"
+            window.location.href = "admin.html"
         }
         else{
             console.log("access does not granted to admin")
@@ -32,7 +32,7 @@ function checkPass(){
         if(username=="user" && password=="user")
         {
             console.log('access granted to user');
-            window.location.href = "{{ url_for('user') }}"
+            window.location.href = "user.html"
             console.log("kajsdf")
         }
         else{

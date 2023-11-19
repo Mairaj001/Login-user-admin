@@ -119,7 +119,7 @@ been_button.addEventListener('click',()=>{
     }
 })
 
-let arr=["I","You","He","She","It"];
+let arr=["I v","You ^","He >","She <","It -"];
 let counter =0;
 
 function load_newone(){
@@ -144,6 +144,7 @@ function load_newone(){
    }
    else{
     alert("You have completed 10 exeerices");
+    window.location.href="cricular.html"
    }
     
 }

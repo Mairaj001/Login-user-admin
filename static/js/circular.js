@@ -1,3 +1,51 @@
+let startTime = 0;
+let timerInterval;
+let isRunning = false;
+let formattedTime=0;
+
+function startTimer() {
+  if (!isRunning) {
+    isRunning = true;
+    startTime = Date.now();
+    timerInterval = setInterval(updateTimer, 1000);
+  }
+}
+
+function stopTimer() {
+  if (isRunning) {
+    clearInterval(timerInterval);
+    isRunning = false;
+  }
+}
+window.sharedData = "This is the data I want to share";
+
+function updateTimer() {
+  const currentTime = Date.now();
+  const elapsedTime = currentTime - startTime;
+  const hours = Math.floor(elapsedTime / (1000 * 60 * 60));
+  const minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
+
+   formattedTime = formatTime(hours, minutes, seconds);
+   console.log(formattedTime);
+  const event = new CustomEvent('dataEvent', { detail: formattedTime });
+  document.dispatchEvent(event);
+  
+}
+
+function formatTime(hours, minutes, seconds) {
+  const paddedHours = hours.toString().padStart(2, '0');
+  const paddedMinutes = minutes.toString().padStart(2, '0');
+  const paddedSeconds = seconds.toString().padStart(2, '0');
+  return `${paddedHours}:${paddedMinutes}:${paddedSeconds}`;
+}
+
+
+
+
+
+
+
 const container = document.getElementById('spiral-container');
 let input_field=document.getElementById('input-field');
 const buttonCount = 6;
@@ -14,7 +62,8 @@ let negScore=0;
 let temp_index=-1;
 
 
-let names=["I","You","He","She","It","He"];
+
+let names=["I v","You ^","He >","She <","It -","they"];
 
 function updateButtonPositions() {
    
@@ -36,7 +85,7 @@ for (let i = 0; i < buttonCount; i++) {
  
     const button = document.createElement('button');
     button.className = 'button';
-    if(i===3)
+    if(i===0)
     {
         button.style.background="orange";
     }
@@ -45,13 +94,16 @@ for (let i = 0; i < buttonCount; i++) {
     container.appendChild(button);
     angles.push(( 2* Math.PI * i) / buttonCount);
     
-    
+    startTimer();
     
 }
 
 
 updateButtonPositions();
-let currentIndex=0;
+
+
+
+let currentIndex=1;
 const buttons = document.querySelectorAll('#spiral-container button');
 function shiftColor() {
     buttons.forEach((button, index) => {
@@ -66,14 +118,18 @@ function shiftColor() {
     console.log(currentIndex);
 }
 
-
+let counter=-1;
 
 function submit_answer(text)
 {
+  counter++;
     input_field.value=text;
-    
+     if(counter==2)
+     {
+      stopTimer();
+     }
    
-
+    
     for (const button of buttons) {
         temp_index++;
     const buttonColor = window.getComputedStyle(button).backgroundColor;
@@ -124,11 +180,5 @@ function submit_answer(text)
 
 function set_interval()
 {
-    const interval = setInterval(() => {
-        shiftColor();
-      }, 220);
-  
-      setTimeout(() => {
-        clearInterval(interval);
-      }, 3000);
+    shiftColor();
 }
