@@ -119,7 +119,7 @@ been_button.addEventListener('click',()=>{
     }
 })
 
-let arr=["I v","You ^","He >","She <","It -"];
+let arr=["v I","^ You","> He","< She","- It"," = they","w We"];
 let counter =0;
 
 function load_newone(){

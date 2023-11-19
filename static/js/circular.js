@@ -12,6 +12,7 @@ function startTimer() {
 }
 
 function stopTimer() {
+  localStorage.setItem('user',formattedTime);
   if (isRunning) {
     clearInterval(timerInterval);
     isRunning = false;
@@ -48,7 +49,7 @@ function formatTime(hours, minutes, seconds) {
 
 const container = document.getElementById('spiral-container');
 let input_field=document.getElementById('input-field');
-const buttonCount = 6;
+const buttonCount = 7;
 const centralX = 130;
 const centralY = 150;
 const radius = 70;
@@ -63,7 +64,7 @@ let temp_index=-1;
 
 
 
-let names=["I v","You ^","He >","She <","It -","they"];
+let names=["v I","^ You","> He","< She","- It"," = they","w We"];
 
 function updateButtonPositions() {
    
