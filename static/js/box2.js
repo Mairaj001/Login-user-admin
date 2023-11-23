@@ -2,6 +2,8 @@ let startTime = 0;
 let timerInterval;
 let isRunning = false;
 let formattedTime=0;
+let timer_show=document.getElementById('timer_div');
+
 
 
 function startTimer() {
@@ -27,6 +29,9 @@ function updateTimer() {
     const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
   
      formattedTime = formatTime(hours, minutes, seconds);
+     timer_show.textContent=formattedTime;
+     console.log(timer_show);
+
     //  console.log(formattedTime);
     
     
@@ -398,7 +403,7 @@ function open_index()
     window.location.href="index.html"
 }
 
-  let arr=['I ↓', 'You ↑', 'He ←', 'She →', 'It −', 'they ↑↑', 'We ↓↓'];
+  let arr=['I ↓', 'You ↑', 'He ←', 'She →', 'It −']//, 'they ↑↑', 'We ↓↓'];
 let counter =0;
 
 function load_newone(){
@@ -426,9 +431,11 @@ function load_newone(){
     })
    }
    else{
-    let scores = JSON.parse(localStorage.getItem('scores')) || [];
-    scores.push(score,negscore,formattedTime);
-    localStorage.setItem('scores', JSON.stringify(scores));
+    localStorage.setItem("user1-pos",score)
+    localStorage.setItem("user1-neg",negscore)
+    localStorage.setItem("time",formattedTime);
+
+   
     alert("You have completed 10 exeerices");
     stopTimer();
     window.location.href="cricular.html"
@@ -438,6 +445,8 @@ function load_newone(){
 
 
 let storedScores = JSON.parse(localStorage.getItem('scores'));
+
+
 
 
 if (storedScores) {
